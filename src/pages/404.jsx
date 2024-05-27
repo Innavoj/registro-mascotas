@@ -7,7 +7,7 @@ export default function Custom404() {
   return (
     <Box  >
        
-      <Typography variant="h3"  >  404 <span className="mx-3 text-4xl">|</span>  {error.data}
+      <Typography variant="h3"  >  {error.status} <span className="mx-3 text-4xl">|</span>  {error.data}
       </Typography>
     </Box>
   );

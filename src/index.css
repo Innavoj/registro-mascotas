@@ -54,6 +54,35 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.link {
+  border-radius: 8px;
+  margin: 10px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  
+}
+.link-drawer {
+  border-radius: 8px;
+  margin: 5px;
+  padding: 0.6em 1.2em;
+  border: 1px solid transparent;
+  display: block;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  color: #0a0a0a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  text-align: center;
+
+  
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

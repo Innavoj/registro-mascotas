@@ -15,6 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import SingIn from "./SingIn";
+import { Link } from "react-router-dom";
 
 
 
@@ -43,11 +44,12 @@ function DrawerAppBar(props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.title} disablePadding>
-            <ListItemButton href={item.link} sx={{ textAlign: "center" }}>
-              <ListItemText primary={item.title} />
-            </ListItemButton>
-          </ListItem>
+       
+            <Link className="link-drawer" to={item.link}  >
+          {item.title}
+          </Link>
+        
+          
         ))}
         <SingIn />
 
@@ -81,9 +83,10 @@ function DrawerAppBar(props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item.title} href={item.link} sx={{ color: "#fff" }}>
-                {item.title}
-              </Button>
+
+              <Link className="link" to={item.link} >
+              {item.title}
+              </Link>
             ))}
             <SingIn />
      

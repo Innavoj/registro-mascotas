@@ -7,7 +7,7 @@
    return (
      <Box  >
         
-       <Typography variant="h3"  >  500 <span className="mx-3 text-4xl">|</span>  {error.data}
+       <Typography variant="h3"  >  {error.status} <span className="mx-3 text-4xl">|</span>  {error.data}
        </Typography>
      </Box>
    );

@@ -1,10 +1,18 @@
-
+import { Box, Toolbar, Typography } from "@mui/material";
 
 export default function DashboardPages() {
     return (
         <>
-        <h1>Dashboard Page</h1>
-        <p>This is a protected page.</p>
-        </>
+      
+        <Box component="main" sx={{ p: 3 }}>
+          <Toolbar />
+          <Typography variant="h3">
+            DASHBOARD Pages
+          </Typography>
+          <Typography variant="h6">
+            Page is it Protect 
+          </Typography>
+        </Box>
+      </>
     )
 }

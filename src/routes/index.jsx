@@ -21,8 +21,8 @@ import Error404 from '../pages/404';
             ]
         },
         { 
-            path: "dashboard", 
-            element: <Dashboard/>,
+            path: "/dashboard", 
+            element: <DashboardLayouts/>,
             children: [
                 { path: "/dashboard", element: <Dashboard/>}
             ]
