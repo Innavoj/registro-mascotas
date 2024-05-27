@@ -17,9 +17,11 @@ import Button from "@mui/material/Button";
 import SingIn from "./SingIn";
 
 
+
 const drawerWidth = 240;
 const navItems = [
   { title: "Home", link: "/" },
+  { title: "Dashboard", link: "/dashboard"},
   { title: "Contact", link: "/contact" },
   { title: "About", link: "/about" },
 ];
@@ -48,6 +50,7 @@ function DrawerAppBar(props) {
           </ListItem>
         ))}
         <SingIn />
+
       </List>
     </Box>
   );
@@ -83,6 +86,7 @@ function DrawerAppBar(props) {
               </Button>
             ))}
             <SingIn />
+     
           </Box>
         </Toolbar>
       </AppBar>
@@ -117,7 +121,7 @@ function DrawerAppBar(props) {
           alias distinctio nostrum. Minima ex dolor modi inventore sapiente
           necessitatibus aliquam fuga et.
         </Typography>
-        <div>HOLA</div>
+ 
       </Box>
     </Box>
   );

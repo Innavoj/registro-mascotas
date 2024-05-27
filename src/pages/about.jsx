@@ -1,9 +1,16 @@
+import { Box, Toolbar, Typography } from "@mui/material";
 
 
-export default function About() {
-    return (
-        <>
-        <h1>About Page</h1>
-        </>
-    )
+export default function AboutPages() {
+  return (
+    <>
+      
+      <Box component="main" sx={{ p: 3 }}>
+        <Toolbar />
+        <Typography variant="h3">
+          ABOUT Pages
+        </Typography>
+      </Box>
+    </>
+  );
 }

@@ -1,6 +1,6 @@
 import { ClerkProvider  } from '@clerk/clerk-react';
-import { Outlet } from "react-router-dom";
-
+import {   Outlet   } from "react-router-dom";
+ 
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
@@ -18,10 +18,13 @@ if (!PUBLISHABLE_KEY) {
 export default function MainLayouts() {
   return (
     <>
-      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+      <ClerkProvider 
+      routerPush={(to) => navigate(to)}
+      routerReplace={(to) => navigate(to, { replace: true })}
+      publishableKey={PUBLISHABLE_KEY}>
         <NavBar />
         <main>
-          <Outlet />
+            <Outlet />
         </main>
         <Footer />
       </ClerkProvider>
