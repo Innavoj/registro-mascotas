@@ -8,6 +8,7 @@ import Dashboard from '../pages/dashboard';
 import Contact from '../pages/contact';
 import About from '../pages/about';
 import Error404 from '../pages/404';
+import HomePages from '../pages/home';
 
  const router = createBrowserRouter([
 
@@ -17,16 +18,11 @@ import Error404 from '../pages/404';
             errorElement: <Error404 />,
             children: [
                 { path: "/contact", element: <Contact/>},
-                { path: "/about", element: <About/>}
-            ]
-        },
-        { 
-            path: "/dashboard", 
-            element: <DashboardLayouts/>,
-            children: [
+                { path: "/about", element: <About/>},
                 { path: "/dashboard", element: <Dashboard/>}
             ]
         },
+       
         
   ])
 
