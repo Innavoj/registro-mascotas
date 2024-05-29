@@ -30,7 +30,7 @@ export default function MainLayouts() {
             <Outlet />
           </div>
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </ClerkProvider>
     </>
   );
