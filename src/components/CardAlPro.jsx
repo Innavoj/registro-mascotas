@@ -55,7 +55,7 @@ const alimentos = [
 
 export default function CardAlPro() {
   return alimentos.map((item) => (
-    <Card sx={{display: 'flex', maxWidth: 345, m: 4}}>
+    <Card sx={{display: 'flex', maxWidth: 350, m: 4}}>
       <CardActionArea>
         <CardMedia
           component="img"
