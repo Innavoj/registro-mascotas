@@ -1,3 +1,4 @@
+import { SignedIn } from "@clerk/clerk-react";
 import { Box, Toolbar, Typography } from "@mui/material";
 
 
