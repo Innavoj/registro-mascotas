@@ -40,7 +40,7 @@ const alimentos = [
   },
   {
     title: "Cafeina y Teina",
-    img: "/img/cafe.jpg",
+    img: "/img/cafeina.jpg",
   },
   {
     title: "Frutos Secos",
