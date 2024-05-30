@@ -21,14 +21,14 @@ function SingIn() {
         <Stack direction="row" spacing={4}>
           <Grid item>
             <SignedOut>
-              <SignInButton forceRedirectUrl="dashboard" />
+              <SignInButton    />
             </SignedOut>
           </Grid>
 
           <Grid item>
             <SignedIn>
               
-              <SignOutButton forceRedirectUrl="/"  />
+              <SignOutButton    />
             </SignedIn>
           </Grid>
         </Stack>
