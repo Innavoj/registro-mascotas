@@ -3,17 +3,36 @@ import {
   SignedOut,
   SignInButton,
   UserButton,
+  SignOutButton,
+  useAuth 
 } from "@clerk/clerk-react";
+import { Grid, Stack } from "@mui/material";
 
 function SingIn() {
+  const { sessionId } = useAuth();
   return (
     <>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justifyContent="space-around"
+      >
+        <Stack direction="row" spacing={4}>
+          <Grid item>
+            <SignedOut>
+              <SignInButton forceRedirectUrl="/dashboard" />
+            </SignedOut>
+          </Grid>
+
+          <Grid item>
+            <SignedIn>
+              
+              <SignOutButton redirectUrl="/"  />
+            </SignedIn>
+          </Grid>
+        </Stack>
+      </Grid>
     </>
   );
 }

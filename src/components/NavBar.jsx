@@ -27,7 +27,7 @@ import SummarizeIcon from "@mui/icons-material/Summarize";
 import SingIn from "./SingIn";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import SearchIcon from "@mui/icons-material/Search";
-import { SignInButton, SignedIn, SignedOut } from "@clerk/clerk-react";
+import { SignInButton, SignedIn, SignedOut, UserButton, SignOutButton } from "@clerk/clerk-react";
 import Portada from "../pages/portada";
 
 const drawerWidth = 200;
@@ -152,7 +152,7 @@ export default function MiniDrawer() {
       <SignedIn>
         <Drawer variant="permanent" open={open}>
           <DrawerHeader>
-            <span>usuario conectado</span>
+              <UserButton />
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon />

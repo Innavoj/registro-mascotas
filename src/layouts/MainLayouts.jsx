@@ -9,6 +9,8 @@ import Routes from "../routes/index";
 
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL = import.meta.env.NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL;
+const NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL = import.meta.env.NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL;
 
 if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
@@ -21,6 +23,8 @@ export default function MainLayouts() {
         routerPush={(to) => navigate(to)}
         routerReplace={(to) => navigate(to, { replace: true })}
         publishableKey={PUBLISHABLE_KEY}
+        signInForceRedirectUrl={NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL}
+        signUpForceRedirectUrl={NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL}
       >
         <NavBar />
        
