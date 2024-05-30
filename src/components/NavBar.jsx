@@ -21,13 +21,14 @@ import MailIcon from "@mui/icons-material/Mail";
 import { Link } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
-import { Icon, Stack } from "@mui/material";
+import { Grid, Icon, Stack } from "@mui/material";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import SummarizeIcon from "@mui/icons-material/Summarize";
 import SingIn from "./SingIn";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import SearchIcon from "@mui/icons-material/Search";
-import { SignInButton, SignedIn } from "@clerk/clerk-react";
+import { SignInButton, SignedIn, SignedOut } from "@clerk/clerk-react";
+import Portada from "../pages/portada";
 
 const drawerWidth = 200;
 const organizacion = "Registro Veterinario de Animales Domèsticos";
@@ -111,40 +112,47 @@ export default function MiniDrawer() {
 
   return (
     <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-      <CssBaseline />
       <AppBar color="secondary" position="fixed" open={open}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "flex" }),
-            }}
+          <SignedIn>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "flex" }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </SignedIn>
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="space-around"
           >
-            <MenuIcon />
-          </IconButton>
-          <Box sx={{ display: "flex", flexDirection: 'row', justifyContent: 'space-between', textAlign: 'center' }}>
-          
-              <Box>
-            <Typography variant="h6" Wrap component="div">
-              {organizacion}
-            </Typography>
-            </Box>
-            <Box>
-            <SingIn />
-            </Box>
-            
-          </Box>
+            <Stack direction="row" spacing={4}>
+              <Grid item>
+                <Typography variant="h6" Wrap component="div">
+                  {organizacion}
+                </Typography>
+              </Grid>
+
+              <Grid item>
+                <SingIn />
+              </Grid>
+            </Stack>
+          </Grid>
         </Toolbar>
       </AppBar>
 
       <SignedIn>
         <Drawer variant="permanent" open={open}>
           <DrawerHeader>
-            <h6>usuario</h6>
+            <span>usuario conectado</span>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon />
@@ -254,24 +262,11 @@ export default function MiniDrawer() {
           </List>
         </Drawer>
       </SignedIn>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-      </Box>
+      <SignedOut>
+        <Box component="main">
+          <Portada />
+        </Box>
+      </SignedOut>
     </Box>
   );
 }
