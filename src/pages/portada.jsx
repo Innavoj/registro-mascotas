@@ -8,7 +8,7 @@ export default function Portada() {
         <Container container>
           <Grid container>
             <Grid item>
-              <Typography variant="h2">
+              <Typography variant="h3">
                 Alimentos prohibidos para tus mascotas
               </Typography>
               <Typography paragraph>

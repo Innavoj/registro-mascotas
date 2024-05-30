@@ -8,49 +8,51 @@ import { CardActionArea } from "@mui/material";
 const alimentos = [
   {
     title: "Huesos y raspas",
-    img: "/src/assets/img/huesos.jpg",
+    img: "/img/huesos.jpg",
   },
   {
     title: "Chocolate",
-    img: "/src/assets/img/chocolate.jpg",
+    img: "/img/chocolate.jpg",
   },
   {
     title: "Leche",
-    img: "/src/assets/img/leche.jpg",
+    img: "/img/leche.jpg",
   },
   {
     title: "Uvas y Pasas",
-    img: "/src/assets/img/uvas.jpg",
+    img: "/img/uvas.jpg",
   },
   {
     title: "Aguacate",
-    img: "/src/assets/img/aguacate.jpg",
+    img: "/img/aguacate.jpg",
   },
   {
     title: "Ajos",
-    img: "/src/assets/img/ajos.jpg",
+    img: "/img/ajos.jpg",
   },
   {
     title: "Cebollas",
-    img: "/src/assets/img/cebollas.jpg",
+    img: "/img/cebollas.jpg",
   },
   {
     title: "Bebidas Alchòlicas",
-    img: "/src/assets/img/cerveza.jpg",
+    img: "/img/cerveza.jpg",
   },
   {
     title: "Cafeina y Teina",
-    img: "/src/assets/img/cafe.jpg",
+    img: "/img/cafe.jpg",
   },
   {
     title: "Frutos Secos",
-    img: "/src/assets/img/secos.jpg",
+    img: "/img/secos.jpg",
   },
   {
     title: "Atùn en Lata",
-    img: "/src/assets/img/atun.jpg",
+    img: "/img/atun.jpg",
   },
 ];
+
+
 export default function CardAlPro() {
   return alimentos.map((item) => (
     <Card sx={{display: 'flex', maxWidth: 345, m: 4}}>
