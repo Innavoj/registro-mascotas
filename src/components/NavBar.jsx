@@ -18,7 +18,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import { Grid, Icon, Stack } from "@mui/material";
@@ -26,11 +26,18 @@ import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantity
 import SummarizeIcon from "@mui/icons-material/Summarize";
 import SingIn from "./SingIn";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
+import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from "@mui/icons-material/Search";
-import { SignInButton, SignedIn, SignedOut, UserButton, SignOutButton } from "@clerk/clerk-react";
-import Portada from "../pages/portada";
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignOutButton,
+} from "@clerk/clerk-react";
+import HomePages from "../pages/home";
 
-const drawerWidth = 200;
+const drawerWidth = 240;
 const organizacion = "Registro Veterinario de Animales Domèsticos";
 
 const openedMixin = (theme) => ({
@@ -88,6 +95,7 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
+  color: "secondary",
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -111,7 +119,8 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
       <AppBar color="secondary" position="fixed" open={open}>
         <Toolbar>
           <SignedIn>
@@ -122,25 +131,19 @@ export default function MiniDrawer() {
               edge="start"
               sx={{
                 marginRight: 5,
-                ...(open && { display: "flex" }),
+                ...(open && { display: "none" }),
               }}
             >
               <MenuIcon />
             </IconButton>
           </SignedIn>
-          <Grid
-            container
-            direction="row"
-            alignItems="center"
-            justifyContent="space-around"
-          >
-            <Stack direction="row" spacing={4}>
-              <Grid item>
-                <Typography variant="h6" Wrap component="div">
+          <Grid contained >
+            <Stack spacing={4} direction="row" alignItems='center' justifyContent="center">
+              <Grid item >
+                <Typography variant="h6" noWrap>
                   {organizacion}
                 </Typography>
               </Grid>
-
               <Grid item>
                 <SingIn />
               </Grid>
@@ -152,7 +155,7 @@ export default function MiniDrawer() {
       <SignedIn>
         <Drawer variant="permanent" open={open}>
           <DrawerHeader>
-              <UserButton />
+            <UserButton />
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon />
@@ -164,6 +167,11 @@ export default function MiniDrawer() {
           <Divider />
           <List>
             {[
+              {
+                title: "Home",
+                linked: "/",
+                icon: <HomeIcon />,
+              },
               {
                 title: "Dashboard",
                 linked: "/dashboard",
@@ -262,11 +270,10 @@ export default function MiniDrawer() {
           </List>
         </Drawer>
       </SignedIn>
-      <SignedOut>
-        <Box component="main">
+
+      {/* <Box component="main">
           <Portada />
-        </Box>
-      </SignedOut>
+        </Box> */}
     </Box>
   );
 }

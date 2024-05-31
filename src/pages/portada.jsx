@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import CardAlPro from "../components/CardAlPro";
 
-export default function Portada() {
+export default function PortadaPages() {
   return (
     <>
       <Box sx={{ pt: 8 }}>

@@ -1,25 +1,88 @@
-import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Container,
+  Grid,
+  Stack,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import * as React from "react";
 
 export default function Footer() {
   return (
     <>
-      <AppBar component="footer" color="secondary" position="relative"></AppBar>
-      <footer>
-        <Toolbar >
-          <Box sx={{ height: "500", width: "100vw", backgroundColor: "purple" }} >
-            <Box>
-              <Typography>Footer</Typography>
-            </Box>
-            <Box>
-              <Typography>Footer</Typography>
-            </Box>
-            <Box>
-              <Typography>Footer</Typography>
-            </Box>
-          </Box>
-        </Toolbar>
-      </footer>
+      <AppBar
+        sx={{ backgroundColor: "#9500ae" }}
+        component="footer"
+        position="relative"
+      >
+        <footer>
+          <Container maxWidth="lg" sx={{ m: 2, p: 2, width: "100vw" }}>
+            <Grid
+              contained
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              
+                <Grid item>
+                  <Typography>Footer</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography>Footer</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography>Footer</Typography>
+                </Grid>
+          
+            </Grid>
+            <Grid
+              contained
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+            
+                <Grid item>
+                  <Typography>Footer</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography>Footer</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography>Footer</Typography>
+                </Grid>
+            
+            </Grid>
+            <Grid
+              contained
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Grid item>
+                <Typography>Footer</Typography>
+              </Grid>
+              <Grid item>
+                <Typography>Footer</Typography>
+              </Grid>
+              <Grid item>
+                <Typography>Footer</Typography>
+              </Grid>
+            </Grid>
+          </Container>
+        </footer>
+      </AppBar>
     </>
   );
 }

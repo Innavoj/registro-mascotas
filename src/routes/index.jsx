@@ -21,13 +21,16 @@ import SearchPages from '../pages/search';
             element: <MainLayouts/>,
             errorElement: <Error404 />,
             children: [
-                { path: "/contactos", element: <ContactPages/>},
+                { path: "/", element: <HomePages/>},
+                { path: "/dashboard", element: <Dashboard/>},
                 { path: "/productos", element: <ProductoPages/>},
                 { path: "/consultas", element: <ConsultasPages/>},
-                { path: "/about", element: <About/>},
-                { path: "/dashboard", element: <Dashboard/>},
                 { path: "/estadisticas", element: <EstadisticasPages/>},
-                { path: "/search", element: <SearchPages/>}
+                { path: "/search", element: <SearchPages/>},
+                { path: "/contactos", element: <ContactPages/>},
+                { path: "/about", element: <About/>},
+                
+
             ]
         },
        
