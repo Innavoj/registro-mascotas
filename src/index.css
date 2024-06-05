@@ -13,6 +13,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.appbar {
+  background: rgb(167,22,241);
+  background: radial-gradient(circle, rgba(167,22,241,1) 0%, rgba(236,230,238,1) 0%, rgba(222,173,247,1) 3%, rgba(178,58,238,1) 24%, rgba(169,41,235,1) 84%, rgba(48,1,73,1) 98%);
+}
+
+
 a {
   font-weight: 500;
   color: #646cff;

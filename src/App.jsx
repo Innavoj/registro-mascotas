@@ -1,8 +1,7 @@
-//import { useState } from "react";
+
 import Routes from "./routes/index"
 
-import "./App.css";
-import MainLayouts from "./layouts/MainLayouts";
+//import "./App.css";
 
 
 export default function App() {
