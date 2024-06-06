@@ -63,8 +63,8 @@ export default function CardAlPro() {
           image={item.img}
           alt={item.title}
         />
-        <CardContent>
-          <Typography variant="h6" component="div">
+        <CardContent >
+          <Typography sx={{ textAlign: 'center'}} variant="h6" component="div">
             {item.title}
           </Typography>
         </CardContent>

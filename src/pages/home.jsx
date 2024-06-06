@@ -4,10 +4,10 @@ import CardAlPro from "../components/CardAlPro";
 export default function HomePages() {
   return (
     <>
-      <Box component='main' sx={{ flexGrow: 1, p: 3, pt: 8 }}>
+      <Box component='main' sx={{ flexGrow: 1, p: 3}}>
         <Container container >
-          <Grid container sx={{alignItems: 'center', justifyContent: 'center'}}>
-            <Grid item>
+          <Grid container >
+            <Grid item sx={{ pt: 8, alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
               <Typography variant="h3">
                 Alimentos prohibidos para tus mascotas
               </Typography>
@@ -22,7 +22,7 @@ export default function HomePages() {
         </Container>
         <Container>
             <Grid container >
-                <Grid item sx={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}}>
+                <Grid item sx={{display: 'flex', flexWrap: 'wrap'}}>
                     <CardAlPro/>
                 </Grid>
             </Grid>

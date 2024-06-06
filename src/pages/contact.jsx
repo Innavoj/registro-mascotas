@@ -5,7 +5,7 @@ export default function ContactPages() {
     return (
         <>
       
-        <Box component="main" sx={{ p: 3 }}>
+        <Box component="main" sx={{ p: 3, textAlign: 'center'}}>
           <Toolbar />
           <Typography variant="h3">
             CONTACT Pages

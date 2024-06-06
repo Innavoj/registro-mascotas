@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { useNavigate } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -13,11 +13,14 @@ import {
 } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import { SignInButton, SignOutButton } from "@clerk/clerk-react";
+import ButtonAction from "./Button";
 
 const organizacion = "Registro Veterinario de Animales Domèsticos";
 
 export default function MenuBar() {
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
+  const [userActive, setUserActive] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -26,6 +29,15 @@ export default function MenuBar() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  function handleClick() {
+    return (
+      setUserActive(!userActive)
+      //alert('me hiciste click' );
+    )
+  };
+
+
   return (
     <>
       <Box sx={{ flexGrow: 1, display: "flex" }}>
@@ -36,9 +48,9 @@ export default function MenuBar() {
                 contained
                 direction="row"
                 display="flex"
-                flexWrap="wrap"
+                flexWrap="nowrap"
                 alignItems="center"
-                justifyContent="space-evenly"
+                justifyContent="space-between"
               >
                 <Grid item>
                   <IconButton
@@ -64,17 +76,12 @@ export default function MenuBar() {
                   alignItems="center"
                   textAlign="center"
                 >
-                  <Stack direction="row" spacing={4}>
-                    <Button color="inherit" variant="outlined">
-                      Sing In
-                    </Button>
-                    <Button color="inherit" variant="outlined">
-                      Sin Out
-                    </Button>
-
-                    {/* <SignInButton />
-                  <SignOutButton />  */}
-                  </Stack>
+                      
+                { userActive 
+                  ? <ButtonAction onClick={()=> navigate('logout')} color="inherit" variant="outlined" texto="Logout" /> 
+                  : <ButtonAction onClick={()=> navigate('login')} color="inherit" variant="outlined" texto="Login" />
+                }
+                 
                 </Grid>
               </Grid>
             </Container>

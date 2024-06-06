@@ -13,6 +13,7 @@ import ProductoPages from '../pages/productos';
 import ConsultasPages from '../pages/consultas';
 import EstadisticasPages from '../pages/estadisticas';
 import SearchPages from '../pages/search';
+import LoginPages from '../pages/login.jsx';
 
  const router = createBrowserRouter([
 
@@ -22,6 +23,7 @@ import SearchPages from '../pages/search';
             errorElement: <Error404 />,
             children: [
                 { path: "/", element: <HomePages/>},
+                { path: '/login', element: <LoginPages/>},
                 { path: "/dashboard", element: <Dashboard/>},
                 { path: "/productos", element: <ProductoPages/>},
                 { path: "/consultas", element: <ConsultasPages/>},
