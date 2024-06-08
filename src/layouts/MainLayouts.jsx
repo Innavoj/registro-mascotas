@@ -1,4 +1,4 @@
-import { ClerkProvider } from "@clerk/clerk-react";
+// import { ClerkProvider } from "@clerk/clerk-react";
 import { Outlet } from "react-router-dom";
 
 import NavBar from "../components/NavBar";
@@ -10,26 +10,26 @@ import { Box } from "@mui/material";
 import MenuBar from "../components/MenuBar";
 
 // Import your publishable key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-const NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL = import.meta.env
-  .NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL;
-const NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL = import.meta.env
-  .NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL;
+// const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+// const NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL = import.meta.env
+//   .NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL;
+// const NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL = import.meta.env
+//   .NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL;
 
-if (!PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key");
-}
+// if (!PUBLISHABLE_KEY) {
+//   throw new Error("Missing Publishable Key");
+// }
 
 export default function MainLayouts() {
   return (
     <>
-      <ClerkProvider
+      {/* <ClerkProvider
         routerPush={(to) => navigate(to)}
         routerReplace={(to) => navigate(to, { replace: true })}
         publishableKey={PUBLISHABLE_KEY}
         signInForceRedirectUrl={NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL}
         signUpForceRedirectUrl={NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL}
-      >
+      > */}
         <MenuBar />
 
         <main>
@@ -38,7 +38,7 @@ export default function MainLayouts() {
           </Box>
         </main>
         <Footer />
-      </ClerkProvider>
+      {/* </ClerkProvider> */}
     </>
   );
 }

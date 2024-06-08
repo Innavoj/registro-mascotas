@@ -14,6 +14,7 @@ import {
 import { Menu } from "@mui/icons-material";
 import { SignInButton, SignOutButton } from "@clerk/clerk-react";
 import ButtonAction from "./Button";
+import MiniDrawer from "./Drawer";
 
 const organizacion = "Registro Veterinario de Animales Domèsticos";
 
@@ -37,7 +38,7 @@ export default function MenuBar() {
     )
   };
 
-
+  console.log('actualizando userActive: ' + userActive);
   return (
     <>
       <Box sx={{ flexGrow: 1, display: "flex" }}>
@@ -45,7 +46,7 @@ export default function MenuBar() {
           <Toolbar>
             <Container maxWidth="lg">
               <Grid
-                contained
+                container
                 direction="row"
                 display="flex"
                 flexWrap="nowrap"
@@ -67,7 +68,7 @@ export default function MenuBar() {
                   </IconButton>
                 </Grid>
                 <Grid item>
-                  <Typography variant="h6">{organizacion}</Typography>
+                  <Typography  variant="h6">{organizacion}</Typography>
                 </Grid>
 
                 <Grid
@@ -78,8 +79,8 @@ export default function MenuBar() {
                 >
                       
                 { userActive 
-                  ? <ButtonAction onClick={()=> navigate('logout')} color="inherit" variant="outlined" texto="Logout" /> 
-                  : <ButtonAction onClick={()=> navigate('login')} color="inherit" variant="outlined" texto="Login" />
+                  ? <ButtonAction onClick={()=> navigate('logout')} color="warning" variant="outlined" texto="Logout" /> 
+                  : <ButtonAction onClick={()=> navigate('login')} color="warning" variant="outlined" texto="Login" />
                 }
                  
                 </Grid>
@@ -87,6 +88,7 @@ export default function MenuBar() {
             </Container>
           </Toolbar>
         </AppBar>
+        {/* <MiniDrawer/> */}
       </Box>
     </>
   );

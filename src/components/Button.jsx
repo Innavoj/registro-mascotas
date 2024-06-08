@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
 
-export default function ButtonAction({onClick, color, variant, texto}) {
+export default function ButtonAction({fullWidth, type, onClick, color, variant, texto, startIcon, endIcon}) {
     return (
       <>
-        <Button onClick={onClick} color={color} variant={variant}>{texto}</Button>
+        <Button  type={type} onClick={onClick} color={color} variant={variant} startIcon={startIcon} endIcon={endIcon}>{texto}</Button>
       </>
     )
   };

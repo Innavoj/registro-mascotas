@@ -2,6 +2,7 @@ import {
   AppBar,
   Box,
   Container,
+  Divider,
   Grid,
   IconButton,
   Stack,
@@ -17,11 +18,11 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 export default function Footer() {
   return (
     <>
-      <AppBar className="footer" component="footer" position="static">
+      <AppBar className="footer" component="footer" position="relative">
         <footer>
           <Container maxWidth="lg" sx={{ m: 2, p: 2, width: "100vw" }}>
             <Grid
-              contained
+              container
               sx={{
                 display: "flex",
                 flexDirection: "row",
@@ -29,7 +30,7 @@ export default function Footer() {
                 justifyContent: "center",
                 padding: 2,
                 margin: 2,
-                flexWrap: "wrap"
+                flexWrap: "wrap",
               }}
             >
               <Grid item sx={{ m: 4, textAlign: "center" }}>
@@ -61,20 +62,40 @@ export default function Footer() {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
-                textAlign: "center"
+                textAlign: "center",
               }}
             >
               <Grid item sx={{ m: 2, textAlign: "center" }}>
-                <WhatsAppIcon color="success" />
+                <WhatsAppIcon fontSize="large" color="success" />
               </Grid>
               <Grid item sx={{ m: 2, textAlign: "center" }}>
-                <InstagramIcon color="warning" />
+                <InstagramIcon fontSize="large" color="warning" />
               </Grid>
               <Grid item sx={{ m: 2, textAlign: "center" }}>
-                <FacebookIcon color="primary" />
+                <FacebookIcon fontSize="large" color="primary" />
               </Grid>
               <Grid item sx={{ m: 2, textAlign: "center" }}>
-                <YouTubeIcon color="error" />
+                <YouTubeIcon fontSize="large" color="error" />
+              </Grid>
+            </Grid>
+            <Divider></Divider>
+            <Grid
+              container
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+
+                flexWrap: "wrap",
+              }}
+            >
+              <Grid item sx={{ m: 1.5, textAlign: "center" }}>
+                <Typography color="orange">
+                  {new Date().getFullYear()} © Derechos Reservados. Version 1.0
+                </Typography>
+                <Typography variant="subtitle2" color="orange">  Patrocinado por Mrs. Reina Soca
+                </Typography>
               </Grid>
             </Grid>
           </Container>

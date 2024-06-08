@@ -137,7 +137,7 @@ export default function MiniDrawer() {
               <MenuIcon />
             </IconButton>
           </SignedIn>
-          <Grid contained >
+          <Grid container >
             <Stack spacing={4} direction="row" alignItems='center' justifyContent="center">
               <Grid item >
                 <Typography variant="h6" noWrap>
@@ -158,7 +158,7 @@ export default function MiniDrawer() {
             <UserButton />
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "rtl" ? (
-                <ChevronRightIcon />
+                <ChevronRightIcon /> 
               ) : (
                 <ChevronLeftIcon />
               )}
