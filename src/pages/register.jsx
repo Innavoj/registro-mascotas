@@ -1,4 +1,4 @@
- 
+import React from "react";
 import {
   Box,
   Button,
@@ -18,7 +18,7 @@ import Input from "@mui/material/Input";
 import IconButton from "@mui/material/IconButton";
 import SendIcon from '@mui/icons-material/Send';
 import GoogleIcon from '@mui/icons-material/Google';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { loginGoogle } from "../redux/authServices";
 
 import {
@@ -26,42 +26,40 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import { app } from "../config/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { Google } from "../redux/authSlice";
 
 
-
-
- function loginGoogle() {
-  const auth = getAuth();
-  signInWithPopup(auth, GoogleAuthProvider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      console.log('login en Google' + user + token);
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log('error en login de Google' + errorMessage + credential);
-      // ...
-    });
-}
 
 export default function RegisterPages() {
 
+  const userActive = useSelector((state) => state.isauth.value)
+  const dispatch = useDispatch()
+  //console.log('valor de useActive en LoginPages: ' + userActive)
 
-  const handleLoginGoogle = () => {
-    loginGoogle();
-  }
+  const navigate = useNavigate();
+
+
+  const loginGoogle = () => {
+    const auth = getAuth(app);
+    const googleauthprovider = new GoogleAuthProvider();
+    signInWithPopup(auth, googleauthprovider)
+    .then((credential) => {
+    const useremail = credential.user.email
+    const userid = credential.user.uid
+    const accessToken = credential.user.accessToken
+    console.log('Login exitoso en Google: ' + useremail );
+    console.log('User Id: ' + userid);
+    console.log('Token: ' + accessToken);
+    dispatch(Google())
+    return navigate('/dashboard')
+    })
+    .catch((error) =>  {
+      console.log('Error en Login Google: ' + error);
+    })
+      
+  };
 
   return (
     <>
@@ -79,7 +77,7 @@ export default function RegisterPages() {
               sx={{ textAlign: "center", p: "1.2em", borderRadius: "0.5em" }}
             >
               <Typography  fontFamily='serif'  variant='h4' sx={{pt:2, pb:2}} >REGVAD</Typography>
-              <ButtonAction  onClick={loginGoogle} color='primary' variant='contained' texto='Login con Google' startIcon={<GoogleIcon />}  />
+              <ButtonAction  onClick={() => loginGoogle()} color='primary' variant='contained' texto='Login con Google' startIcon={<GoogleIcon />}  />
               <Divider sx={{mt:2, mb:1}}>OR</Divider>
               <Box component="form">
                 <TextField

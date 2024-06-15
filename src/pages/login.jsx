@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import {
   Box,
@@ -16,59 +17,43 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   getAuth,
   signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
 } from "firebase/auth";
 
 import { app } from '../config/firebase';
 // Initialize Firebase Authentication and get a reference to the service
 
-
-
-
-
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../redux/authSlice";
 
 
 
 export default function LoginPages() {
+
+  const userActive = useSelector((state) => state.isauth.value)
+  const dispatch = useDispatch()
+  //console.log('valor de useActive en LoginPages: ' + userActive)
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  function loginUser() {
+   const loginUser = async () => {
     const auth = getAuth(app);
-    console.log('email: ' + email + 'password: ' + password);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const emailuser = userCredential.user.email;
-        const tokenId = userCredential.user.getIdToken();
-        const userActive = true;
-        
-        console.log('login de firebase' + emailuser + tokenId);
-        console.log('usuario Activo: ' + userActive);
-        return userActive && navigate('/');
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('error en login de firebase' + errorMessage);
-      });
-  };
+     
+    const Credential = await signInWithEmailAndPassword(auth, email, password)
+    try {
+      const useremail = Credential.user.email
+      const { token, expirationTime} = await Credential.user.getIdTokenResult()
+      console.log('login exitoso en Firebase: ' + useremail )
+      console.log('Token: ' + token )
+      console.log('Tiempo de Expiration: ' + expirationTime)
+      dispatch(login())
+      return navigate('/dashboard')
+    } catch (error) {
+      alert(' Error en login de Firebase: ' + error)
+    }
 
-  function logoutUser() {
-    const auth = getAuth();
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        console.log('logout de firebase');
-      })
-      .catch((error) => {
-        // An error happened.
-        console.log('error en logout de firebase');
-      });
-  };
+   };
 
   return (
     <>
@@ -120,7 +105,7 @@ export default function LoginPages() {
                   />
 
                   <ButtonAction
-                    onClick={loginUser}
+                    onClick={() => loginUser()}
                     color="info"
                     variant="contained"
                     texto="Log In"

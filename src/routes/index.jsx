@@ -15,6 +15,7 @@ import EstadisticasPages from '../pages/estadisticas';
 import SearchPages from '../pages/search';
 import LoginPages from '../pages/login.jsx';
 import RegisterPages from '../pages/register.jsx';
+import LogoutPages from '../pages/logout.jsx';
 
  const router = createBrowserRouter([
 
@@ -25,6 +26,7 @@ import RegisterPages from '../pages/register.jsx';
             children: [
                 { path: "/", element: <HomePages/>},
                 { path: '/login', element: <LoginPages/>},
+                { path: '/logout', element: <LogoutPages/>},
                 { path: '/register', element: <RegisterPages/>},
                 { path: "/dashboard", element: <Dashboard/>},
                 { path: "/productos", element: <ProductoPages/>},

@@ -1,13 +1,16 @@
 // import { ClerkProvider } from "@clerk/clerk-react";
 import { Outlet } from "react-router-dom";
 
-import NavBar from "../components/NavBar";
+//import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import HomePages from "../pages/home";
 import DashboardPages from "../pages/dashboard";
 import Routes from "../routes/index";
 import { Box } from "@mui/material";
 import MenuBar from "../components/MenuBar";
+ 
+//import Navbar from "../components/NavBar";
+ 
 
 // Import your publishable key
 // const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -30,6 +33,7 @@ export default function MainLayouts() {
         signInForceRedirectUrl={NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL}
         signUpForceRedirectUrl={NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL}
       > */}
+       
         <MenuBar />
 
         <main>
