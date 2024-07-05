@@ -16,6 +16,11 @@ import SearchPages from '../pages/search';
 import LoginPages from '../pages/login.jsx';
 import RegisterPages from '../pages/register.jsx';
 import LogoutPages from '../pages/logout.jsx';
+import PropietariosPages from '../pages/propietarios.jsx';
+import AnimalesPages from '../pages/animales.jsx';
+import HistorialMedicoPages from '../pages/historial.jsx';
+import CitasPages from '../pages/citas.jsx';
+import RegistroPages from '../pages/registro.jsx';
 
  const router = createBrowserRouter([
 
@@ -29,7 +34,10 @@ import LogoutPages from '../pages/logout.jsx';
                 { path: '/logout', element: <LogoutPages/>},
                 { path: '/register', element: <RegisterPages/>},
                 { path: "/dashboard", element: <Dashboard/>},
+                { path: '/animales', element: < RegistroPages />},
+                { path: '/historial', element: < HistorialMedicoPages />},
                 { path: "/productos", element: <ProductoPages/>},
+                { path: '/citas', element: < CitasPages />},
                 { path: "/consultas", element: <ConsultasPages/>},
                 { path: "/estadisticas", element: <EstadisticasPages/>},
                 { path: "/search", element: <SearchPages/>},

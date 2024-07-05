@@ -8,6 +8,7 @@ import {
   CssBaseline,
   Divider,
   Drawer,
+  drawerClasses,
   Grid,
   IconButton,
   List,
@@ -29,13 +30,14 @@ import { Outlet } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 
-import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
+import ProductionIcon from "@mui/icons-material/ProductionQuantityLimits";
 import SummarizeIcon from "@mui/icons-material/Summarize";
 
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
-
+import { CalendarToday, HowToReg, Pets } from "@mui/icons-material";
+import InfoIcon from '@mui/icons-material/Info';
 import MenuIcon from "@mui/icons-material/Menu";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -48,26 +50,26 @@ import { useSelector, useDispatch } from "react-redux";
 const organizacion = "Registro Veterinario de Animales Domèsticos";
 const drawerWidth = 240;
 
-// const openedMixin = (theme) => ({
-//   width: drawerWidth,
-//   transition: theme.transitions.create("width", {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.enteringScreen,
-//   }),
-//   overflowX: "hidden",
-// });
+ const openedMixin = (theme) => ({
+   width: drawerWidth,
+   transition: theme.transitions.create("width", {
+     easing: theme.transitions.easing.sharp,
+     duration: theme.transitions.duration.enteringScreen,
+   }),
+   overflowX: "hidden",
+ });
 
-// const closedMixin = (theme) => ({
-//   transition: theme.transitions.create("width", {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-//   overflowX: "hidden",
-//   width: `calc(${theme.spacing(7)} + 1px)`,
-//   [theme.breakpoints.up("sm")]: {
-//     width: `calc(${theme.spacing(8)} + 1px)`,
-//   },
-// });
+ const closedMixin = (theme) => ({
+   transition: theme.transitions.create("width", {
+     easing: theme.transitions.easing.sharp,
+     duration: theme.transitions.duration.leavingScreen,
+   }),
+   overflowX: "hidden",
+   width: `calc(${theme.spacing(7)} + 1px)`,
+   [theme.breakpoints.up("sm")]: {
+     width: `calc(${theme.spacing(8)} + 1px)`,
+   },
+ });
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -78,23 +80,23 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-// const Drawer = styled(MuiDrawer, {
-//   shouldForwardProp: (prop) => prop !== "open",
-// })(({ theme, open }) => ({
-//   width: drawerWidth,
-//   flexShrink: 0,
-//   whiteSpace: "nowrap",
-//   boxSizing: "border-box",
-//   color: "secondary",
-//   ...(open && {
-//     ...openedMixin(theme),
-//     "& .MuiDrawer-paper": openedMixin(theme),
-//   }),
-//   ...(!open && {
-//     ...closedMixin(theme),
-//     "& .MuiDrawer-paper": closedMixin(theme),
-//   }),
-// }));
+//  const Drawer = styled(MuiDrawer, {
+//    shouldForwardProp: (prop) => prop !== "open",
+//  })(({ theme, open }) => ({
+//    width: drawerWidth,
+//    flexShrink: 0,
+//    whiteSpace: "nowrap",
+//    boxSizing: "border-box",
+//    color: "secondary",
+//    ...(open && {
+//      ...openedMixin(theme),
+//      "& .MuiDrawer-paper": openedMixin(theme),
+//    }),
+//    ...(!open && {
+//      ...closedMixin(theme),
+//      "& .MuiDrawer-paper": closedMixin(theme),
+//    }),
+//  }));
 
 export default function MenuBar() {
   const theme = useTheme();
@@ -153,14 +155,7 @@ export default function MenuBar() {
                   alignItems="center"
                   textAlign="center"
                 >
-                  {userActive ? (
-                    <ButtonAction
-                      onClick={() => navigate("logout")}
-                      color="warning"
-                      variant="outlined"
-                      startIcon={<LogoutIcon />}
-                    />
-                  ) : (
+                  {!userActive && (
                     <ButtonAction
                       onClick={() => navigate("login")}
                       color="warning"
@@ -174,20 +169,25 @@ export default function MenuBar() {
           </Toolbar>
         </AppBar>
         { userActive && 
-        <Drawer
+        <Drawer  className="appbar"
           sx={{
             width: drawerWidth,
             flexShrink: 0,
             "& .MuiDrawer-paper": {
               width: drawerWidth,
               boxSizing: "border-box",
+              backgroundColor: 'rgba(67,60,71,1)',
+              color: 'white'
             },
           }}
           variant="persistent"
+          
           anchor="left"
           open={open}
+          onClick={handleDrawerClose}
         >
           <DrawerHeader>
+            <Typography>Usuario Conectado</Typography>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon />
@@ -210,17 +210,22 @@ export default function MenuBar() {
                 icon: <DashboardIcon />,
               },
               {
-                title: "Productos",
-                linked: "/productos",
-                icon: <ProductionQuantityLimitsIcon />,
+                title: "Animales",
+                linked: "/animales",
+                icon: <Pets />,
               },
               {
-                title: "Consultas",
-                linked: "/consultas",
+                title: "Historial Medico",
+                linked: "/historial",
                 icon: <SummarizeIcon />,
               },
               {
-                title: "Estadisticas",
+                title: "Citas",
+                linked: "/citas",
+                icon: <CalendarToday />,
+              },
+              {
+                title: "Reportes",
                 linked: "/estadisticas",
                 icon: <ShowChartIcon />,
               },
@@ -244,6 +249,7 @@ export default function MenuBar() {
                         minWidth: 0,
                         mr: open ? 3 : "auto",
                         justifyContent: "center",
+                        color: 'white'
                       }}
                     >
                       {text.icon}
@@ -251,7 +257,7 @@ export default function MenuBar() {
 
                     <ListItemText
                       primary={text.title}
-                      sx={{ opacity: open ? 1 : 0 }}
+                      sx={{ color: "white", opacity: open ? 1 : 0 }}
                     />
                   </ListItemButton>
                 </Link>
@@ -269,7 +275,12 @@ export default function MenuBar() {
               {
                 title: "About",
                 linked: "/about",
-                icon: <ContactPageIcon />,
+                icon: <InfoIcon />,
+              },
+              {
+                title: "Logout",
+                linked: "/logout",
+                icon: <LogoutIcon />,
               },
             ].map((text) => (
               <ListItem key={text.title} disablePadding sx={{ display: "block" }}>
@@ -286,6 +297,7 @@ export default function MenuBar() {
                         minWidth: 0,
                         mr: open ? 3 : "auto",
                         justifyContent: "center",
+                        color: 'white'
                       }}
                     >
                       {text.icon}
@@ -293,7 +305,7 @@ export default function MenuBar() {
 
                     <ListItemText
                       primary={text.title}
-                      sx={{ opacity: open ? 1 : 0 }}
+                      sx={{ color: "white", opacity: open ? 1 : 0 }}
                     />
                   </ListItemButton>
                 </Link>
