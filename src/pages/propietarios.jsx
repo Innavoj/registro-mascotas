@@ -41,7 +41,7 @@ export default function PropietariosPages() {
               <Paper
                 sx={{ textAlign: "center", p: "1.2em", borderRadius: "0.5em" }}
               >
-                <Typography
+                <Typography color="orangered"
                   fontFamily="serif"
                   variant="h4"
                   sx={{ pt: 2, pb: 2 }}

@@ -41,7 +41,7 @@ export default function AnimalesPages() {
               <Paper
                 sx={{ textAlign: "center", p: "1.2em", borderRadius: "0.5em" }}
               >
-                <Typography
+                <Typography color="olivedrab"
                   fontFamily="serif"
                   variant="h4"
                   sx={{ pt: 2, pb: 2 }}
@@ -115,6 +115,7 @@ export default function AnimalesPages() {
                     label="Caracteristicas Especiales"
                     sx={{ mt: 1.5, mb: 1.5 }}
                     required
+                    multiline
                   />
 
                   

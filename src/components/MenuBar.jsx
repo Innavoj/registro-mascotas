@@ -210,7 +210,7 @@ export default function MenuBar() {
                 icon: <DashboardIcon />,
               },
               {
-                title: "Animales",
+                title: "Mascotas",
                 linked: "/animales",
                 icon: <Pets />,
               },

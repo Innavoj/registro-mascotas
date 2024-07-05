@@ -42,7 +42,7 @@ export default function RegistroPages() {
               <Paper
                 sx={{ textAlign: "center", p: "1.2em", borderRadius: "0.5em" }}
               >
-                <Typography
+                <Typography color="orange"
                   fontFamily="serif"
                   variant="h4"
                   sx={{ pt: 2, pb: 2 }}

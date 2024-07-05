@@ -30,15 +30,15 @@ export default function HistorialMedicoPages() {
             sx={{ minHeight: "100vh" }}
           >
             <Grid item>
-              <Paper
+              <Paper variant="outlined"
                 sx={{ textAlign: "center", p: "1.2em", borderRadius: "0.5em" }}
               >
-                <Typography
+                <Typography color="orange"
                   fontFamily="serif"
                   variant="h4"
                   sx={{ pt: 2, pb: 2 }}
                 >
-                  Historial Medico
+                  Historial Médico
                 </Typography>
 
                 <Box component="form">
