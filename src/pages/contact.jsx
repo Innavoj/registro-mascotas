@@ -28,12 +28,12 @@ export default function ContactPages() {
               <Paper elevation="3" 
                 sx={{ textAlign: "center", p: "1.2em", borderRadius: "0.5em" }}
               >
-                <Typography color="secondary"
+                <Typography color="orange"
                   fontFamily="serif"
                   variant="h4"
                   sx={{ pt: 2, pb: 2 }}
                 >
-                   Contáctame
+                   Envianos tus Comentarios 
                 </Typography>
 
                 <Box component="form">
@@ -89,8 +89,8 @@ export default function ContactPages() {
                   
                   <Divider sx={{ mt: 2, mb: 1 }}></Divider>
                   <ButtonAction
-                    
-                    color="secondary"
+                    fullWidth="fullWidth"
+                    color="primary"
                     variant="contained"
                     texto="Send"
                     endIcon={<SendIcon />}

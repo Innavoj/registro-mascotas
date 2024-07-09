@@ -90,7 +90,7 @@ export default function Footer() {
             {iconos.map((i) => (
               <Grid item sx={{ m: 1.5, textAlign: "center" }} key={i.title}>
                 <Link to={i.linked}>
-                  <IconButton children={i.icon} edge="end" size="large"></IconButton>
+                  <IconButton children={i.icon} size="large"></IconButton>
                 </Link>
               </Grid>
             ))}
@@ -108,7 +108,7 @@ export default function Footer() {
             }}
           >
             <Grid item sx={{ m: 1.5, textAlign: "center" }}>
-              <Typography color="secondary">
+              <Typography className="footer-letter">
                 Innavoj Aruges © Derechos Reservados. Version 1.0 -{" "}
                 {new Date().getFullYear()}
               </Typography>

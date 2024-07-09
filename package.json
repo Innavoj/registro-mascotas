@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.15.18",
     "@mui/material": "^5.15.18",
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@mui/x-data-grid": "^7.9.0",
     "@mui/x-date-pickers": "^7.9.0",
     "@reduxjs/toolkit": "^2.2.5",
     "dayjs": "^1.11.11",

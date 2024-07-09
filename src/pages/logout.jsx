@@ -73,7 +73,7 @@ export default function LogoutPages() {
               <Paper
                 sx={{ textAlign: "center", p: "1.2em", borderRadius: "0.5em" }}
               >
-                <Typography
+                <Typography color="orange"
                   fontFamily="serif"
                   variant="h4"
                   sx={{ pt: 2, pb: 2 }}
@@ -88,7 +88,7 @@ export default function LogoutPages() {
                   variant="h5"
                   sx={{ pt: 2, pb: 2 }}
                 >
-                  Esta Seguro que quiere salir de la Aplicacion ?
+                  Esta Seguro que quiere salir de la Aplicación ?
                 </Typography>
                   <Stack spacing={2}>
                   <ButtonAction
@@ -96,7 +96,7 @@ export default function LogoutPages() {
                     color="inherit"
                     variant="contained"
                     texto="cancelar"
-                    
+                    fullWidth="fullWidth"
                   />
                   <ButtonAction
                     onClick={() => logoutUser()}
@@ -104,6 +104,7 @@ export default function LogoutPages() {
                     variant="contained"
                     texto="Aceptar"
                     endIcon={<SendIcon />}
+                    fullWidth="fullWidth"
                   />
                   </Stack>
                   <Divider sx={{ mt: 2, mb: 1 }}></Divider>

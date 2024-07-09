@@ -1,4 +1,4 @@
-import { SignIn, SignedIn } from "@clerk/clerk-react";
+ 
 import { Box, Toolbar, Typography } from "@mui/material";
 
 export default function DashboardPages() {

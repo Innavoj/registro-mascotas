@@ -21,6 +21,9 @@
   background: rgb(116,111,120);
   background: radial-gradient(circle, rgba(116,111,120,1) 0%, rgba(67,60,71,1) 33%, rgba(18,2,25,1) 78%, rgba(9,1,13,1) 100%);
 }
+.footer-letter {
+  color: rgba(67,60,71,1);
+}
 
 a {
   font-weight: 500;
@@ -89,9 +92,14 @@ button:focus-visible {
   cursor: pointer;
   transition: border-color 0.25s;
   text-align: center;
-
-  
 }
+
+.Card:hover {
+  color: #f9f9f9;
+  background: rgb(116,111,120);
+  background: radial-gradient(circle, rgba(116,111,120,1) 0%, rgba(67,60,71,1) 33%, rgba(18,2,25,1) 78%, rgba(9,1,13,1) 100%);
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

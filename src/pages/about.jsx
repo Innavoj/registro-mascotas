@@ -26,6 +26,30 @@ export default function AboutPages() {
           y te ofrece múltiples métodos para realizar estas notificaciones y
           llevar un seguimiento de las mismas.
         </Typography>
+        <Typography color="orange" variant="h4">REGVAD facilita tu gestión administrativa</Typography>
+        <Typography paragraph>
+          REGVAD cuenta con funciones específicas para la gestión correcta de la tienda como presupuestos o reservas, 
+          y te permitirá llevar de forma separada las ventas realizadas en cada sección. Además del control de stock tradicional, 
+          REGVAD te permite ver, de forma simple y gráfica, toda la información de un determinado producto. 
+          Tendrás acceso a existencias, pedidos y reservas pendientes, ventas y compras anuales, etc. además de los datos de lotes y caducidades si corresponde. 
+          Toda esta información te ayudará a tener unos procesos de compra más eficientes, conseguir un stock óptimo de todos los productos que comercialices 
+          y llevar un registro completo de la trazabilidad de aquellos productos que tú consideres necesarios.
+        </Typography>
+        <Typography color="orange" variant="h4">Porqué usar REGVAD ?</Typography>
+        <Typography paragraph>
+          <strong>Movilidad:</strong>desde donde estés, en casa, en la clínica, en tus visitas a domicilio. 
+          Sólo necesitas un navegador Web y una conexión a internet para llevar tu clínica contigo.
+          <Typography>
+          <strong>Mínima inversión:</strong> no necesitas un servidor, ni un ordenador potente, ni configurar un complejo sistema de red. 
+          Delega los costes de mantenimiento del software y la infraestructura que lo soporta.
+          Vercel cuenta con la más avanzada tecnología en la nube, lo que nos permite garantizar un 99.9% de disponibilidad.
+          </Typography>
+          <Typography>
+          <strong>Copias de seguridad y custodia de los datos:</strong> en Vercel realizamos, al menos, una copia de seguridad diaria de tus datos 
+          y garantizamos su custodia bajo medidas de seguridad muy estrictas acordes a la legalidad vigente.
+          </Typography>
+          
+        </Typography>
       </Box>
     </>
   );

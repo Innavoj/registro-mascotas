@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+//import "../index.css"
 
 const alimentos = [
   {
@@ -55,9 +56,9 @@ const alimentos = [
 
 export default function CardAlPro() {
   return alimentos.map((item) => (
-    <Card key={item.title} sx={{display: 'flex', maxWidth: 350, m: 4}}>
-      <CardActionArea>
-        <CardMedia
+    <Card className="Card" key={item.title} sx={{display: 'flex', maxWidth: 350, m: 4}}>
+      <CardActionArea >
+        <CardMedia 
           component="img"
           height="140"
           image={item.img}
