@@ -4,6 +4,7 @@ import {
   Container,
   Divider,
   Grid,
+  IconButton,
   InputLabel,
   Menu,
   MenuItem,
@@ -18,144 +19,228 @@ import ButtonAction from "../components/Button";
 import SendIcon from "@mui/icons-material/Send";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Label } from "@mui/icons-material";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import Progress from '../components/Progress';
+
+
+
 
 export default function AnimalesPages() {
+
   const [animal, setAnimal] = useState("");
   const [especie, setEspecie] = useState("Perro");
   const [raza, setRaza] = useState("Pastor");
   const [edad, setEdad] = useState("");
   const [historia, setHistoria] = useState("");
-  const [propietario, setPropietario] = useState("");
+  const [propietario, setPropietario] = useState('');
   const [caracter, setCaracter] = useState("");
   const [select, setSelect] = useState([]);
   const [isloading, setIsloading] = useState(true);
   const userActive = useSelector((state) => state.isauth.value);
-  const baseURL = "https://node-postgresql-tan.vercel.app";
+  const baseURI = "https://node-postgresql-tan.vercel.app";
+
+   useEffect(() => {
+     if (isloading) {
+       async function fetchData() {
+         try {
+           const response = await fetch(baseURI + "/api/propietario");
+           if (response.ok) {
+             const datos = await response.json();
+             setSelect(datos);
+             setIsloading(false);
+           } else {
+             console.log("Hubo error al obtener Datos");
+           }
+         } catch (error) {
+           console.log("Error en la API");
+         }
+       }
+       fetchData();
+     }
+   }, []);
 
 
-
-
+    if (isloading) {
+     return <Progress />;
+   }
 
   if (userActive) {
     return (
       <>
-        <Grid item>
-          <TextField
-            color="primary"
-            value={animal}
-            onChange={(e) => setAnimal(e.target.value)}
-            type="text"
-            name="animal"
-            variant="standard"
-            label="Nombre"
-            sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}
-            required
-          />
-        </Grid>
-        <Grid item>
-          <TextField
-            color="primary"
-            value={edad}
-            onChange={(e) => setEdad(e.target.value)}
-            type="number"
-            name="edad"
-            variant="standard"
-            label="Edad"
-            sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}
-            required
-          />
-        </Grid>
-        <Grid item>
-          <TextField
-            color="primary"
-            value={historia}
-            onChange={(e) => setHistoria(e.target.value)}
-            type="number"
-            name="historia"
-            variant="standard"
-            label="Historia Clinica"
-            sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}
-            required
-          />
-        </Grid>
-        <Grid item>
-          
-        <Select
-            color="primary"
-            defaultValue="Gato"
-            value={propietario}
-            onChange={(e) => setPropietario(e.target.value)}
-            name="propietario"
-            variant="standard"
-            label="Propietario"
-            sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}
-            required
-          >
-            <MenuItem value="Opc1">Opc1</MenuItem>
-            <MenuItem value="Opc2">Opc2</MenuItem>
-            {console.log(propietario)}
-          </Select>
-           
-        </Grid>
+        <Container maxWidth="lg" sx={{ m: 2, p: 2, width: "100vw" }}>
+          <Grid
+            container
+            sx={{
+              display: "flex",
+              flexDirection: "row",
 
-        <Grid item>
-          <Select
-            color="primary"
-            defaultValue="Gato"
-            value={especie}
-            onChange={(e) => setEspecie(e.target.value)}
-            name="especie"
-            variant="standard"
-            label="Especie"
-            sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}
-            required
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
           >
-            <MenuItem value="Perro">Perro</MenuItem>
-            <MenuItem value="Gato">Gato</MenuItem>
-          </Select>
-        </Grid>
-        <Grid item>
-          <Select
-            color="primary"
-            value={raza}
-            onChange={(e) => setRaza(e.target.value)}
-            name="raza"
-            variant="standard"
-            label="Raza"
-            sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}
-            required
-          >
-            <MenuItem value="Pastor">Pastor</MenuItem>
-            <MenuItem value="Pequines">Pequines</MenuItem>
-            <MenuItem value="DogBerMan">DogBerMan</MenuItem>
-            <MenuItem value="PitBull">PitBull</MenuItem>
-          </Select>
-        </Grid>
+            <Paper
+              elevation={3}
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                textAlign: "start",
+                p: "1.5em",
+                mt: "2em",
+                borderRadius: "0.5em",
+              }}
+            >
+              <Typography
+                color="orange"
+                fontFamily="serif"
+                variant="h4"
+                textAlign="center"
+              >
+                Registro de Mascotas
+              </Typography>
 
-        <TextField
-          color="primary"
-          value={caracter}
-          onChange={(e) => setCaracter(e.target.value)}
-          fullWidth
-          type="text"
-          name="caracter"
-          variant="outlined"
-          label="Caracteristicas Especiales"
-          sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}
-          required
-          multiline
-          maxRows="4"
-        />
-         <Grid > 
-           
-          <ButtonAction
-            color="info"
-            variant="contained"
-            texto="Registrar"
-            endIcon={<SendIcon />}
-          />
-          
-         </Grid> 
+              <Grid
+                container
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                }}
+              >
+                <Grid item>
+                  <TextField
+                    color="primary"
+                    value={animal}
+                    onChange={(e) => setAnimal(e.target.value)}
+                    type="text"
+                    name="animal"
+                    variant="standard"
+                    label="Nombre"
+                    sx={{ mt: 1.5, m: 1.5 }}
+                    required
+                  />
+                </Grid>
+                <Grid item>
+                  <TextField
+                    color="primary"
+                    value={edad}
+                    onChange={(e) => setEdad(e.target.value)}
+                    type="number"
+                    name="edad"
+                    variant="standard"
+                    label="Edad"
+                    sx={{ mt: 1.5, m: 1.5 }}
+                    required
+                  />
+                </Grid>
+                <Grid item>
+                  <TextField
+                    color="primary"
+                    value={historia}
+                    onChange={(e) => setHistoria(e.target.value)}
+                    type="number"
+                    name="historia"
+                    variant="standard"
+                    label="Historia "
+                    sx={{ mt: 1.5, m: 1.5 }}
+                    required
+                  />
+                </Grid>
+                <Grid item>
+                  <Select
+                    color="primary"
+                    defaultValue="Gato"
+                    value={especie}
+                    onChange={(e) => setEspecie(e.target.value)}
+                    name="especie"
+                    variant="standard"
+                    label="Especie"
+                    sx={{ pt: 2, m: 2, width: "150px" }}
+                    required
+                  >
+                    <MenuItem value="Perro">Perro</MenuItem>
+                    <MenuItem value="Gato">Gato</MenuItem>
+                  </Select>
+                </Grid>
+                <Grid item>
+                  <Select
+                    color="primary"
+                    value={raza}
+                    onChange={(e) => setRaza(e.target.value)}
+                    name="raza"
+                    variant="standard"
+                    label="Raza"
+                    sx={{ pt: 2, m: 2, width: "150px" }}
+                    required
+                  >
+                    <MenuItem value="Pastor">Pastor</MenuItem>
+                    <MenuItem value="Pequines">Pequines</MenuItem>
+                    <MenuItem value="DogBerMan">DogBerMan</MenuItem>
+                    <MenuItem value="PitBull">PitBull</MenuItem>
+                  </Select>
+                </Grid>
+                <Grid item sx={{ width: "100%" }}>
+                  <InputLabel id="select-label" sx={{ m: 1.5, pt: 2 }}>
+                    Propietario:
+                  </InputLabel>
+                   
+                  
+                  <Select
+                    labelId="select-label"
+                    id="select"
+                    color="primary"
+                    value={propietario}
+                    onChange={(e) => setPropietario(e.target.value)}
+                    name="propietario"
+                    variant="standard"
+                    label="Propietario"
+                    sx={{ width: "85%", mt: 1.5, mb: 1.5, m: 1.5 }}
+                    required
+                  >
+                    
+                    { select.rows.map((e) => {
+                    return (
+                      <MenuItem key={e.propietario_id} value={e.propietario_id}>{e.propietario_nombre1} {e.propietario_nombre2} {e.propietario_apell1} {e.propietario_apell2} {e.propietario_email}</MenuItem>
+                    )
+                  })}
+                    
+                  </Select>
+                 
+                  <IconButton color="primary" children={<PersonAddIcon />} />
+                </Grid>
+
+                <Grid item sx={{ width: "100%" }}>
+                  <TextField
+                    color="primary"
+                    value={caracter}
+                    onChange={(e) => setCaracter(e.target.value)}
+                    fullWidth
+                    type="text"
+                    name="caracter"
+                    variant="outlined"
+                    label="Caracteristicas Especiales"
+                    sx={{ width: "90%", mt: 1.5, mb: 1.5, m: 1.5 }}
+                    required
+                    multiline
+                    maxRows="4"
+                  />
+                </Grid>
+                <Divider sx={{ mt: 2, mb: 1 }}></Divider>
+                <Grid item sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}>
+                  <ButtonAction
+                     
+                    color="info"
+                    variant="contained"
+                    texto="Registrar"
+                    endIcon={<SendIcon />}
+                  />
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+        </Container>
       </>
     );
   }
