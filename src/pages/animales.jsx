@@ -4,11 +4,8 @@ import {
   Container,
   Divider,
   Grid,
-  IconButton,
   InputLabel,
-  Menu,
   MenuItem,
-  NativeSelect,
   Paper,
   Select,
   Stack,
@@ -17,53 +14,78 @@ import {
 } from "@mui/material";
 import ButtonAction from "../components/Button";
 import SendIcon from "@mui/icons-material/Send";
-import { Link } from "react-router-dom";
+
 import { useSelector } from "react-redux";
-import { Label } from "@mui/icons-material";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import Progress from '../components/Progress';
 
-
-
+import ProgressCircular from "../components/ProgressCircular";
+import ProgressLinear from "../components/ProgressLinear.jsx";
+import ModalBasic from "../components/Modal";
+import { useNavigate } from "react-router-dom";
 
 export default function AnimalesPages() {
-
   const [animal, setAnimal] = useState("");
   const [especie, setEspecie] = useState("Perro");
   const [raza, setRaza] = useState("Pastor");
   const [edad, setEdad] = useState("");
   const [historia, setHistoria] = useState("");
-  const [propietario, setPropietario] = useState('');
+  const [propietario, setPropietario] = useState("");
   const [caracter, setCaracter] = useState("");
   const [select, setSelect] = useState([]);
   const [isloading, setIsloading] = useState(true);
   const userActive = useSelector((state) => state.isauth.value);
   const baseURI = "https://node-postgresql-tan.vercel.app";
+  const navigate = useNavigate();
 
-   useEffect(() => {
-     if (isloading) {
-       async function fetchData() {
-         try {
-           const response = await fetch(baseURI + "/api/propietario");
-           if (response.ok) {
-             const datos = await response.json();
-             setSelect(datos);
-             setIsloading(false);
-           } else {
-             console.log("Hubo error al obtener Datos");
-           }
-         } catch (error) {
-           console.log("Error en la API");
-         }
-       }
-       fetchData();
-     }
-   }, []);
-
-
+  useEffect(() => {
     if (isloading) {
-     return <Progress />;
-   }
+      async function fetchData() {
+        try {
+          const response = await fetch(baseURI + "/api/propietario");
+          if (response.ok) {
+            const datos = await response.json();
+            setSelect(datos);
+            setIsloading(false);
+          } else {
+            alert("Hubo error al obtener Datos");
+          }
+        } catch (error) {
+          alert("Error en la API");
+        }
+      }
+      fetchData();
+    }
+  }, [isloading]);
+
+  const handleClick = async () => {
+    const datos = {
+      animal_historia: historia,
+      animal_nombre: animal,
+      animal_especie: especie,
+      animal_raza: raza,
+      animal_edad: edad,
+      animal_caracter: caracter,
+    };
+    try {
+      const response = await fetch(baseURI + "/api/animal/" + propietario, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(datos),
+      });
+      const data = await response.json();
+     // setOpen(false);
+      navigate ("/dashboard", {replace: "true"});
+    } catch (error) {
+      console.error("Error en la API: " + error);
+    }
+  };
+
+  if (isloading) {
+    return <ProgressCircular/>
+  }
 
   if (userActive) {
     return (
@@ -181,12 +203,20 @@ export default function AnimalesPages() {
                     <MenuItem value="PitBull">PitBull</MenuItem>
                   </Select>
                 </Grid>
-                <Grid item sx={{ width: "100%" }}>
+                <Grid
+                  item
+                  sx={{
+                    pt: 2,
+                    pb: 2,
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                  }}
+                >
                   <InputLabel id="select-label" sx={{ m: 1.5, pt: 2 }}>
                     Propietario:
                   </InputLabel>
-                   
-                  
+
                   <Select
                     labelId="select-label"
                     id="select"
@@ -196,19 +226,24 @@ export default function AnimalesPages() {
                     name="propietario"
                     variant="standard"
                     label="Propietario"
-                    sx={{ width: "85%", mt: 1.5, mb: 1.5, m: 1.5 }}
+                    sx={{ width: "80%", mt: 1.5, mb: 1.5, m: 1.5 }}
                     required
                   >
-                    
-                    { select.rows.map((e) => {
-                    return (
-                      <MenuItem key={e.propietario_id} value={e.propietario_id}>{e.propietario_nombre1} {e.propietario_nombre2} {e.propietario_apell1} {e.propietario_apell2} {e.propietario_email}</MenuItem>
-                    )
-                  })}
-                    
+                    {select.rows.map((e) => {
+                      return (
+                        <MenuItem
+                          key={e.propietario_id}
+                          value={e.propietario_id}
+                        >
+                          {e.propietario_nombre1} {e.propietario_nombre2}{" "}
+                          {e.propietario_apell1} {e.propietario_apell2}{" "}
+                          {e.propietario_email}
+                        </MenuItem>
+                      );
+                    })}
                   </Select>
-                 
-                  <IconButton color="primary" children={<PersonAddIcon />} />
+
+                  <ModalBasic />
                 </Grid>
 
                 <Grid item sx={{ width: "100%" }}>
@@ -230,7 +265,7 @@ export default function AnimalesPages() {
                 <Divider sx={{ mt: 2, mb: 1 }}></Divider>
                 <Grid item sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}>
                   <ButtonAction
-                     
+                    onClick={handleClick}
                     color="info"
                     variant="contained"
                     texto="Registrar"
