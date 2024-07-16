@@ -36,7 +36,7 @@ export default function ModalBasic() {
   const [apell2, setApell2] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
-  const baseURI = "https://node-postgresql-tan.vercel.app";
+  const baseURI = import.meta.env.VITE_BASE_URI;
   const navigate = useNavigate();
 
   const handleInsert = async () => {

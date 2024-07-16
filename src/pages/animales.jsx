@@ -22,6 +22,8 @@ import ProgressLinear from "../components/ProgressLinear.jsx";
 import ModalBasic from "../components/Modal";
 import { useNavigate } from "react-router-dom";
 
+const baseURI = import.meta.env.VITE_BASE_URI;
+
 export default function AnimalesPages() {
   const [animal, setAnimal] = useState("");
   const [especie, setEspecie] = useState("Perro");
@@ -33,7 +35,7 @@ export default function AnimalesPages() {
   const [select, setSelect] = useState([]);
   const [isloading, setIsloading] = useState(true);
   const userActive = useSelector((state) => state.isauth.value);
-  const baseURI = "https://node-postgresql-tan.vercel.app";
+
   const navigate = useNavigate();
 
   useEffect(() => {
