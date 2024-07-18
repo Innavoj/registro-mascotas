@@ -216,7 +216,7 @@ export default function MenuBar() {
                 },
                 {
                   title: "Mascotas",
-                  linked: "/animales",
+                  linked: "/mascotas",
                   icon: <Pets />,
                 },
                 {

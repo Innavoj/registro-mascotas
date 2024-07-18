@@ -4,12 +4,12 @@
 
 
  const firebaseConfig = {
-     apiKey: "AIzaSyBjscbE2e4KGxHuJlPhS6XE-Rig6uf4dSI",
-     authDomain: "registros-veterinario.firebaseapp.com",
-     projectId: "registros-veterinario",
-     storageBucket: "registros-veterinario.appspot.com",
-     messagingSenderId: "822956477734",
-     appId: "1:822956477734:web:890026ae5310087f6445e7"
+     apiKey: import.meta.env.VITE_APP_API_KEY,
+     authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
+     projectId: import.meta.env.VITE_APP_PROJECT_ID,
+     storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
+     messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
+     appId: import.meta.env.VITE_APP_APP_ID,
    };
 
 //   // Initialize Firebase
