@@ -80,24 +80,28 @@ export default function BasicTable({ props, columns, buscar, count }) {
         </TableHead>
         <TableBody>{renderMascotas()}</TableBody>
       </Table>
-
-      <Typography sx={{ pt: 2 }}>
-        Cantidad Pàginas: {count} - Pàgina: {page}
-      </Typography>
-      <Box sx={{pt:2, pb:2, display:"flex", flexDirection:"row", justifyContent: 'center'}}>
-        <ButtonAction
-          onClick={OnPrevPage}
-          color="success"
+      <Typography sx={{ pt: 2, }}>Pàgina: {page}</Typography>
+      <Stack
+        spacing={2}
+        sx={{
+          pt: 2,
+          pb: 2,
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
+        
+        <Pagination 
+          color="warning"
           variant="outlined"
-          texto="Prev"
+          shape="rounded"
+          count={count}
+          page={page}
+          onChange={handleChange}
         />
-        <ButtonAction
-          onClick={OnNextPage}
-          color="info"
-          variant="outlined"
-          texto="Next"
-        />
-      </Box>
+      </Stack>
     </TableContainer>
   );
 }
