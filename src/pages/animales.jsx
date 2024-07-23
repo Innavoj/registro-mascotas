@@ -85,9 +85,9 @@ export default function AnimalesPages() {
     }
   };
 
-  if (isloading) {
-    return <ProgressCircular/>
-  }
+   if (isloading) {
+     return <ProgressCircular/>
+   }
 
   if (userActive) {
     return (
@@ -231,6 +231,7 @@ export default function AnimalesPages() {
                     sx={{ width: "80%", mt: 1.5, mb: 1.5, m: 1.5 }}
                     required
                   >
+
                     {select.rows.map((e) => {
                       return (
                         <MenuItem

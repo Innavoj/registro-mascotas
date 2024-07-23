@@ -31,6 +31,9 @@ export default function BasicTable({ props, columns, buscar, count }) {
     setPage(value);
   };
 
+
+
+
   const OnPrevPage = () => {
     if (page === 1) return;
     setPage((prev) => prev - 1);
@@ -50,8 +53,13 @@ export default function BasicTable({ props, columns, buscar, count }) {
       );
     }
 
+    const handleClickRows = () => {
+      
+      alert('selecionado el id: ' )
+    }
+
     return dataFiltred.map((e) => (
-      <TableRow
+      <TableRow onClick={handleClickRows}
         key={e.animal_id}
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
       >
@@ -69,7 +77,7 @@ export default function BasicTable({ props, columns, buscar, count }) {
     <TableContainer>
       <Table aria-label="simple table">
         <TableHead>
-          <TableRow>
+          <TableRow >
             {/* {console.log(columns)} */}
             {columns.map((e, index) => (
               <TableCell align="center" key={index}>
