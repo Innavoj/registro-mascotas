@@ -116,6 +116,7 @@ export default function MascotasPages() {
                   display: "flex",
                   flexDirection: "row",
                   flexWrap: "wrap",
+                  textAlign: "center",
                 }}
               >
                 <Grid item>
@@ -127,12 +128,11 @@ export default function MascotasPages() {
                     name="buscar"
                     variant="outlined"
                     size="small"
-                    icon={<SearchIcon />}
                     label="Buscar mascota"
                     sx={{ mt: 1.5, m: 1.5 }}
                     InputProps={{
                       startAdornment: (
-                        <InputAdornment variant="outlined" position="start">
+                        <InputAdornment position="start">
                           <SearchIcon />
                         </InputAdornment>
                       ),
@@ -143,17 +143,23 @@ export default function MascotasPages() {
 
                 <Grid item>
                   <Typography
+                    color="orange"
                     sx={{
+                      p: 2,
                       display: "flex",
                       flexDirection: "row",
                       justifyItems: "center",
                       justifyContents: "center",
+                      textAlign: "center",
                     }}
                   >
                     Nueva Mascota
                   </Typography>
                 </Grid>
-                <Grid item sx={{ display: "flex", justifyItems: "center" }}>
+                <Grid
+                  item
+                  sx={{ p: 1, display: "flex", justifyItems: "center" }}
+                >
                   <Link to={"/registro"} justifyItems="center">
                     <IconButton color="info" children={<AddCircleIcon />} />
                   </Link>
