@@ -85,9 +85,9 @@ export default function AnimalesPages() {
     }
   };
 
-  if (isloading) {
-    return <ProgressCircular/>
-  }
+   if (isloading) {
+     return <ProgressCircular/>
+   }
 
   if (userActive) {
     return (
@@ -264,7 +264,7 @@ export default function AnimalesPages() {
                     maxRows="4"
                   />
                 </Grid>
-                <Divider sx={{ mt: 2, mb: 1 }}></Divider>
+                {/* <Divider sx={{ mt: 2, mb: 1 }}></Divider> */}
                 <Grid item sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}>
                   <ButtonAction
                     onClick={handleClick}

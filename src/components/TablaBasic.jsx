@@ -50,8 +50,13 @@ export default function BasicTable({ props, columns, buscar, count }) {
       );
     }
 
+    const handleClickRows = () => {
+      
+      alert('selecionado el id: ' )
+    }
+
     return dataFiltred.map((e) => (
-      <TableRow
+      <TableRow onClick={handleClickRows}
         key={e.animal_id}
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
       >
@@ -69,7 +74,7 @@ export default function BasicTable({ props, columns, buscar, count }) {
     <TableContainer>
       <Table aria-label="simple table">
         <TableHead>
-          <TableRow>
+          <TableRow >
             {/* {console.log(columns)} */}
             {columns.map((e, index) => (
               <TableCell align="center" key={index}>
@@ -80,24 +85,28 @@ export default function BasicTable({ props, columns, buscar, count }) {
         </TableHead>
         <TableBody>{renderMascotas()}</TableBody>
       </Table>
-
-      <Typography sx={{ pt: 2 }}>
-        Cantidad Pàginas: {count} - Pàgina: {page}
-      </Typography>
-      <Box sx={{pt:2, pb:2, display:"flex", flexDirection:"row", justifyContent: 'center'}}>
-        <ButtonAction
-          onClick={OnPrevPage}
-          color="success"
+      <Typography sx={{ pt: 2, }}>Pàgina: {page}</Typography>
+      <Stack
+        spacing={2}
+        sx={{
+          pt: 2,
+          pb: 2,
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
+        
+        <Pagination 
+          color="warning"
           variant="outlined"
-          texto="Prev"
+          shape="rounded"
+          count={count}
+          page={page}
+          onChange={handleChange}
         />
-        <ButtonAction
-          onClick={OnNextPage}
-          color="info"
-          variant="outlined"
-          texto="Next"
-        />
-      </Box>
+      </Stack>
     </TableContainer>
   );
 }

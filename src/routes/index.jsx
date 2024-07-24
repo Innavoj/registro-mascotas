@@ -40,6 +40,7 @@ import MascotasPages from '../pages/mascotas.jsx';
                 { path: '/mascotas', element: < MascotasPages />},
                 { path: '/animales', element: <AnimalesPages />},
                 { path: '/historial', element: < HistorialMedicoPages />},
+                { path: '/registro', element: <RegistroPages />},
                 { path: "/productos", element: <ProductoPages/>},
                 { path: '/citas', element: < CitasPages />},
                 { path: "/consultas", element: <ConsultasPages/>},
