@@ -21,7 +21,6 @@ import { useSelector } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ProgressCircular from "../components/ProgressCircular";
-
 import ModalBasic from "../components/Modal";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -54,7 +53,6 @@ export default function MascotasPages() {
           if (response.ok) {
             const datos = await response.json();
             setData(datos);
-
             setCount(Math.ceil(datos.rows.length / limitPage));
             setIsloading(false);
           } else {
@@ -71,8 +69,6 @@ export default function MascotasPages() {
   if (isloading) {
     return <ProgressCircular />;
   }
-
-  // if (data.length == 0) return <div>Loading...</div>;
 
   if (userActive) {
     return (

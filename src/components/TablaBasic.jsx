@@ -31,9 +31,6 @@ export default function BasicTable({ props, columns, buscar, count }) {
     setPage(value);
   };
 
-
-
-
   const OnPrevPage = () => {
     if (page === 1) return;
     setPage((prev) => prev - 1);
