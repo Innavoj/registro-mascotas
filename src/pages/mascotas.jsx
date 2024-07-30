@@ -21,7 +21,7 @@ import { useSelector } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ProgressCircular from "../components/ProgressCircular";
-
+ 
 import ModalBasic from "../components/Modal";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -61,7 +61,7 @@ export default function MascotasPages() {
             alert("Hubo error al obtener Datos");
           }
         } catch (error) {
-          alert("Error en la API");
+          alert("Error en la API " + error);
         }
       }
       fetchData();
@@ -71,8 +71,6 @@ export default function MascotasPages() {
   if (isloading) {
     return <ProgressCircular />;
   }
-
-  // if (data.length == 0) return <div>Loading...</div>;
 
   if (userActive) {
     return (

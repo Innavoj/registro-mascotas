@@ -50,6 +50,7 @@ import { useSelector, useDispatch } from "react-redux";
 //import { logout } from "../redux/authSlice";
 
 const organizacion = "Registro Veterinario de Animales Domèsticos";
+const version = 'R E G V A D  - v.1.0.0';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -166,6 +167,11 @@ export default function MenuBar() {
                     />
                   )}
                 </Grid>
+                {userActive && (
+                  <Avatar
+                    sx={{ width: 25, height: 25, bgcolor: deepPurple[500] }}
+                  ></Avatar>
+                )}
               </Grid>
             </Container>
           </Toolbar>
@@ -188,11 +194,8 @@ export default function MenuBar() {
             open={open}
             onClick={handleDrawerClose}
           >
-            <DrawerHeader>
-              <Avatar sx={{ width: 25, height: 25, bgcolor: deepPurple[500] }}>
-               
-              </Avatar>
-              <Typography>Usuario Conectado</Typography>
+            <DrawerHeader sx={{justifyItems: 'center', textAlign: 'center'}}>
+              <Typography >{version}</Typography>
               <IconButton onClick={handleDrawerClose}>
                 {theme.direction === "rtl" ? (
                   <ChevronRightIcon />
