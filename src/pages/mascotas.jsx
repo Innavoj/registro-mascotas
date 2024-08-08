@@ -59,7 +59,7 @@ export default function MascotasPages() {
             alert("Hubo error al obtener Datos");
           }
         } catch (error) {
-          alert("Error en la API");
+          alert("Error en la API " + error);
         }
       }
       fetchData();

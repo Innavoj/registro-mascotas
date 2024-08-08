@@ -23,6 +23,7 @@ import CitasPages from '../pages/citas.jsx';
 import RegistroPages from '../pages/registro.jsx';
 import InventarioPages from '../pages/inventario.jsx';
 import MascotasPages from '../pages/mascotas.jsx';
+import EditarMascotaPages from '../pages/editarmascota.jsx';
 
  const router = createBrowserRouter([
 
@@ -39,7 +40,8 @@ import MascotasPages from '../pages/mascotas.jsx';
                 { path: "/inventario", element: <InventarioPages/>},
                 { path: '/mascotas', element: < MascotasPages />},
                 { path: '/animales', element: <AnimalesPages />},
-                { path: '/historial', element: < HistorialMedicoPages />},
+                { path: '/editarmascota/:id', element: <EditarMascotaPages />},
+                { path: '/historial', element: <HistorialMedicoPages />},
                 { path: '/registro', element: <RegistroPages />},
                 { path: "/productos", element: <ProductoPages/>},
                 { path: '/citas', element: < CitasPages />},

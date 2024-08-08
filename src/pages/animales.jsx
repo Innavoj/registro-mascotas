@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from "react";
 import {
-  Box,
   Container,
-  Divider,
   Grid,
   InputLabel,
   MenuItem,
   Paper,
   Select,
-  Stack,
   TextField,
   Typography,
 } from "@mui/material";
 import ButtonAction from "../components/Button";
 import SendIcon from "@mui/icons-material/Send";
-
 import { useSelector } from "react-redux";
-
 import ProgressCircular from "../components/ProgressCircular";
-import ProgressLinear from "../components/ProgressLinear.jsx";
+
 import ModalBasic from "../components/Modal";
 import { useNavigate } from "react-router-dom";
+import EnviaAlertas from "../components/Alert.jsx";
+
 
 const baseURI = import.meta.env.VITE_BASE_URI;
 
@@ -33,9 +30,9 @@ export default function AnimalesPages() {
   const [propietario, setPropietario] = useState("");
   const [caracter, setCaracter] = useState("");
   const [select, setSelect] = useState([]);
+  const [alerta, setAlerta] = useState(false);
   const [isloading, setIsloading] = useState(true);
   const userActive = useSelector((state) => state.isauth.value);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,14 +48,15 @@ export default function AnimalesPages() {
             alert("Hubo error al obtener Datos");
           }
         } catch (error) {
-          alert("Error en la API");
+          alert("Error en la API " + error);
         }
       }
       fetchData();
     }
   }, [isloading]);
 
-  const handleClick = async () => {
+
+  const handleClickInserta = async () => {
     const datos = {
       animal_historia: historia,
       animal_nombre: animal,
@@ -78,16 +76,16 @@ export default function AnimalesPages() {
         body: JSON.stringify(datos),
       });
       const data = await response.json();
-     // setOpen(false);
-      navigate ("/dashboard", {replace: "true"});
+      setAlerta(true);
+      setInterval(location.reload(), 10000);
     } catch (error) {
-      console.error("Error en la API: " + error);
+      alert("Error al insertar en BD: " + error);
     }
   };
 
-   if (isloading) {
-     return <ProgressCircular/>
-   }
+  if (isloading) {
+    return <ProgressCircular />;
+  }
 
   if (userActive) {
     return (
@@ -203,6 +201,9 @@ export default function AnimalesPages() {
                     <MenuItem value="Pequines">Pequines</MenuItem>
                     <MenuItem value="DogBerMan">DogBerMan</MenuItem>
                     <MenuItem value="PitBull">PitBull</MenuItem>
+                    <MenuItem value="Sato">Sato</MenuItem>
+                    <MenuItem value="Siamess">Siamess</MenuItem>
+                    <MenuItem value="Angorano">Angorano</MenuItem>
                   </Select>
                 </Grid>
                 <Grid
@@ -264,10 +265,10 @@ export default function AnimalesPages() {
                     maxRows="4"
                   />
                 </Grid>
-                {/* <Divider sx={{ mt: 2, mb: 1 }}></Divider> */}
+           
                 <Grid item sx={{ mt: 1.5, mb: 1.5, m: 1.5 }}>
                   <ButtonAction
-                    onClick={handleClick}
+                    onClick={handleClickInserta}
                     color="info"
                     variant="contained"
                     texto="Registrar"
@@ -277,7 +278,12 @@ export default function AnimalesPages() {
               </Grid>
             </Paper>
           </Grid>
+         
         </Container>
+        {alerta && ( 
+          <EnviaAlertas severity="success" texto="Se inserto Correctamente" alert={alerta}/>
+          
+          )}
       </>
     );
   }
