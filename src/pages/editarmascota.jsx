@@ -64,7 +64,7 @@ export default function EditarMascotaPages() {
       });
       const data = await response.json();
       setAlerta(true);
-      setInterval(location.reload(), 10000);
+     // setInterval(location.reload(), 10000);
     } catch (error) {
       alert("Error al insertar en BD: " + error);
     }

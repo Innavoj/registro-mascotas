@@ -227,11 +227,11 @@ export default function MenuBar() {
                   linked: "/historial",
                   icon: <SummarizeIcon />,
                 },
-                {
-                  title: "Inventario",
-                  linked: "/inventario",
-                  icon: <InventoryIcon />,
-                },
+                // {
+                //   title: "Inventario",
+                //   linked: "/inventario",
+                //   icon: <InventoryIcon />,
+                // },
                 {
                   title: "Citas",
                   linked: "/citas",

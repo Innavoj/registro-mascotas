@@ -70,7 +70,7 @@ export default function BasicTable({ props, columns, buscar, count }) {
         });
         const datos = await response.json();
         setAlerta(true);
-        setInterval(location.reload(), 10000);
+       // setInterval(location.reload(), 10000);
       } catch (error) {
         alert("Error en la API " + error);
       }
@@ -139,8 +139,9 @@ export default function BasicTable({ props, columns, buscar, count }) {
         <EnviaAlertas
           severity="success"
           texto="Se ha Borrado Correctamente"
-          alert={alerta}
+          alerta={alerta}
         />
+        
       )}
     </TableContainer>
   );

@@ -53,7 +53,7 @@ export default function AnimalesPages() {
       }
       fetchData();
     }
-  }, [isloading]);
+  }, []);
 
 
   const handleClickInserta = async () => {
@@ -77,7 +77,7 @@ export default function AnimalesPages() {
       });
       const data = await response.json();
       setAlerta(true);
-      setInterval(location.reload(), 10000);
+    //  setInterval(location.reload(), 10000);
     } catch (error) {
       alert("Error al insertar en BD: " + error);
     }
@@ -281,9 +281,9 @@ export default function AnimalesPages() {
          
         </Container>
         {alerta && ( 
-          <EnviaAlertas severity="success" texto="Se inserto Correctamente" alert={alerta}/>
+          <EnviaAlertas severity="success" texto="Se inserto Correctamente" alerta={alerta}/>
           
-          )}
+          )} 
       </>
     );
   }
