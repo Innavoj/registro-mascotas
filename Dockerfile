@@ -1,18 +1,13 @@
-# develop stage
-# Usa una imagen base de Node.js  
-FROM node:18.17.0-alpine3.18
-# Establece el directorio de trabajo  
+# Build Stage
+FROM node:alpine3.20 AS build
 WORKDIR /app
-
-# Copia los archivos package.json y package-lock.json 
-COPY package\*.json ./  
-# Instala las dependencias  
-RUN npm install 
-# Copia el resto del código de la aplicación  
-COPY . .  
-# Construye la aplicación  
-RUN npm run build  
-# Expone el puerto en el que la aplicación se ejecutará  
-EXPOSE 5173
-# Comando para iniciar la aplicación  
-CMD \["npm", "run", "dev"\]
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+ 
+# Production Stage
+FROM nginx:stable-alpine AS production
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
